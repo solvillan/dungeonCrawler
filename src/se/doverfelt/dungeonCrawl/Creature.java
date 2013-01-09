@@ -10,11 +10,8 @@ public abstract class Creature extends Entity {
 	
 	private CreatureAI ai;
 	
-	public static final int tileSize = 8;
-	public static final int scaleFactor = 4;
-	public static final int step = tileSize * scaleFactor;
-	
-	public static final String FUNGUS = "fungus";
+	public static final int tileSize = 16;
+	public static final int scaleFactor = 2;
 	
 	private int maxHp;
 	public int maxHp() { return maxHp; }
@@ -41,9 +38,13 @@ public abstract class Creature extends Entity {
 	}
 	
 	public void move(int dx, int dy) {
-		float cx = x + dx * step;
-		float cy = y + dy * step;
-		
+		float cx = x + (dx * 2) ;
+		float cy = y + (dy * 2);
+				
+		if (collide("obstacle", cx, cy) == null) {
+			x = cx;
+			y = cy;
+		}
 		
 	}
 	

@@ -33,11 +33,11 @@ public class Start extends StateBasedGame {
 	public static void main(String[] args) {
 		try {
 			AppGameContainer appgc = new AppGameContainer(new Start("Dungeon Crawl 0.1"));
-			appgc.setDisplayMode(appgc.getScreenWidth(), appgc.getScreenHeight(), true);
+			appgc.setDisplayMode(/*appgc.getScreenWidth(), appgc.getScreenHeight(),*/ 500, 500, false);
 			appgc.setTargetFrameRate(60);
 			appgc.start();
 			
-			ME.keyToggleDebug = Input.KEY_HOME;
+			ME.keyToggleDebug = Input.KEY_1;
 			
 		} catch (SlickException e) {
 			e.printStackTrace();

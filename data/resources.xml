@@ -7,8 +7,7 @@
 	<!-- songs -->
 	<!-- images -->
 	<!-- sheets -->
-	<sheet file="lofi_char.png" height="8" key="char" width="8" />
-	<sheet file="lofi_environment.png" height="8" key="env" width="8" />
+	<sheet file="Character.png" height="32" key="char" width="32" />
 	<!-- fonts -->
 	<!-- maps -->
 	<map key="map1" file="Test.tmx" />

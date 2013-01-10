@@ -9,7 +9,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import it.randomtower.engine.Camera;
-import it.randomtower.engine.ResourceManager;
 import it.randomtower.engine.World;
 
 public class WorldOverworld extends World {

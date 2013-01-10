@@ -23,11 +23,11 @@ public class Map {
 	public void loadEntityFromMap(List<String> types, World world)
 			throws SlickException {
 		if (map == null) {
-			Log.error("unable to load map information");
+			Log.error("Unable to load map information");
 			return;
 		}
 		if (types == null || types.isEmpty()) {
-			Log.error("no types defined to load");
+			Log.error("No types defined to load");
 			return;
 		}
 		// layer have property type, so check it

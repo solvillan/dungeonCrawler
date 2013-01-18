@@ -13,20 +13,22 @@ public class Player extends Creature {
 	
 	private String lastDir = "STAND_RIGHT";
 	
+	private SpriteSheet g;
+	
 	public Player(float x, float y) {
 		super(x, y);
 		
 		Image g1 = ResourceManager.getSpriteSheet("char").getScaledCopy(2);
 		
-		SpriteSheet g = new SpriteSheet(g1, 32 * 2, 32 * 2);
+		g = new SpriteSheet(g1, 32 * 2, 32 * 2);
 		
-		setHitBox(0, 0, g.getSubImage(1, 1).getWidth(), g.getSubImage(1, 1).getHeight());
+		setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
 		
 		setupAnimations(g);
 		
 		addType(PLAYER);
 		
-		setAI(new PlayerAI(this));
+		setAI(new PlayerAI(this, (WorldOverworld) world));
 		
 	}
 	
@@ -52,23 +54,27 @@ public class Player extends Creature {
 		Input input = gc.getInput();
 		
 		if (input.isKeyDown(Input.KEY_W)) {
+			setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
 			move(0, -1);
 			currentAnim = ME.WALK_UP;
 			lastDir = "STAND_UP";
 		}
 		if (input.isKeyDown(Input.KEY_S)) {
+			setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
 			move(0, 1);
 			currentAnim = ME.WALK_DOWN;
 			lastDir = "STAND_DOWN";
 		}
 		if (input.isKeyDown(Input.KEY_A)) {
+			setHitBox(14, 5, g.getSubImage(1, 1).getWidth() - 10, g.getSubImage(1, 1).getHeight() -10);
 			move(-1, 0);
 			currentAnim = ME.WALK_LEFT;
 			lastDir = "STAND_LEFT";
 		}
 		if (input.isKeyDown(Input.KEY_D)) {
-			currentAnim = ME.WALK_RIGHT;
+			setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
 			move(1, 0);
+			currentAnim = ME.WALK_RIGHT;
 			lastDir = "STAND_RIGHT";
 		}
 		if (!input.isKeyDown(Input.KEY_W) && !input.isKeyDown(Input.KEY_A) && !input.isKeyDown(Input.KEY_S) && !input.isKeyDown(Input.KEY_D)) {

@@ -1,19 +1,21 @@
 package se.doverfelt.dungeonCrawl;
 
-import org.newdawn.slick.util.Log;
-
+import it.randomtower.engine.World;
 import it.randomtower.engine.entity.Entity;
 
 public class PlayerAI extends CreatureAI {
 
-	public PlayerAI(Creature creature) {
+	private World world;
+	
+	public PlayerAI(Creature creature, WorldOverworld world) {
 		super(creature);
+		this.world = world;
 	}
 	
 	@Override
 	public void collide(Entity other) {
 		
-		Log.debug("Hit: " + other);
+	
 		
 	}
 

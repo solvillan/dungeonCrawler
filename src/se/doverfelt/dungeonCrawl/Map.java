@@ -44,6 +44,7 @@ public class Map {
 			if (layerIndex != -1) {
 				Log.debug("Entity layer found on map");
 				int loaded = 0;
+				
 				for (int w = 0; w < map.getWidth(); w++) {
 					for (int h = 0; h < map.getHeight(); h++) {
 						Image img = map.getTileImage(w, h, layerIndex);
@@ -66,6 +67,10 @@ public class Map {
 						}
 					}
 				}
+				
+				world.setHeight((map.getHeight() - 1) * 16 * 4);
+				world.setWidth((map.getWidth() - 1) * 16 * 4);
+				
 				Log.debug("Loaded " + loaded + " entities");
 			} else {
 				Log.info("Entity layer not found on map");

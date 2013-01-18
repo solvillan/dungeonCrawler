@@ -40,12 +40,16 @@ public abstract class Creature extends Entity {
 	public void move(int dx, int dy) {
 		float cx = x + dx * 2 ;
 		float cy = y + dy * 2;
-				
+		
+		if (cx >= world.width || cy >= world.height) {
+			return;
+		} else if (cx <= 0 || cy <= 0) {
+			return;
+		}
+		
 		if (this.collide(Tile.WALL, cx, cy) == null) {
 			x = cx;
 			y = cy;
-		} else {
-			return;
 		}
 		
 	}

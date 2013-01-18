@@ -15,7 +15,11 @@ public class WorldOverworld extends World {
 	
 	private Map map;
 	
-	private Player player;
+	private Player player = null;
+	
+	private Hud hud;
+	
+	private int health = 100;
 	
 	public WorldOverworld(int id, GameContainer container) {
 		super(id, container);
@@ -26,6 +30,8 @@ public class WorldOverworld extends World {
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		map = new Map("map1");
 		
+		hud = new Hud();
+		
 		player = new Player(10, 10);
 		
 		map.loadEntityFromMap(Arrays.asList("ground"), this);
@@ -35,14 +41,16 @@ public class WorldOverworld extends World {
 		
 		this.setCamera(new Camera(player, gc.getWidth(), gc.getHeight()));
 		
+		
 	}
 	
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		//map.render(g);
 		
 		super.render(gc, sbg, g);
-		g.drawString("Dungeon Crawler 0.1", 10, 25);
+		
+		hud.drawVersion(g);
+		hud.drawHealth(g, health);
 		
 	}
 	
@@ -56,6 +64,18 @@ public class WorldOverworld extends World {
 			sbg.enterState(1);
 		}
 		
+		if (input.isKeyPressed(Input.KEY_LSHIFT)) {
+			health++;
+		}
+		if (input.isKeyPressed(Input.KEY_LCONTROL)) {
+			health--;	
+		}
+		
+		
+	}
+	
+	public Player getPlayer() {
+		return player;
 	}
 	
 }

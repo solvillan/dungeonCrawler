@@ -21,4 +21,10 @@ public class Hud {
 		
 	}
 	
+	public void drawPlayerName(Graphics g, Player player) { 
+		
+		g.drawString(Start.USERNAME, player.x - 10, player.y - 10);
+		
+	}
+	
 }

@@ -16,6 +16,8 @@ public class Start extends StateBasedGame {
 
 	private boolean resourcesInitiated = false;
 
+	public static String USERNAME;
+	
 	public Start(String name) {
 		super(name);
 	}
@@ -31,6 +33,12 @@ public class Start extends StateBasedGame {
 	}
 	
 	public static void main(String[] args) {
+		if (args.length >= 1) {
+			USERNAME = args[0];
+		} else {
+			USERNAME = "None";
+		}
+		
 		try {
 			AppGameContainer appgc = new AppGameContainer(new Start("Dungeon Crawl 0.1"));
 			appgc.setDisplayMode(appgc.getScreenWidth(), appgc.getScreenHeight(), true);

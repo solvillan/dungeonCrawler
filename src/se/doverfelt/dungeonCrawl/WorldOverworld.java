@@ -16,6 +16,7 @@ public class WorldOverworld extends World {
 	private Map map;
 	
 	private Player player = null;
+	private PlayerName pname;
 	
 	private Hud hud;
 	
@@ -33,11 +34,13 @@ public class WorldOverworld extends World {
 		hud = new Hud();
 		
 		player = new Player(10, 10);
+		pname = new PlayerName(10, 10, player, gc.getGraphics());
 		
 		map.loadEntityFromMap(Arrays.asList("ground"), this);
 		map.loadEntityFromMap(Arrays.asList("tree"), this);
 		
 		add(player);
+		add(pname);
 		
 		this.setCamera(new Camera(player, gc.getWidth(), gc.getHeight()));
 		
@@ -49,8 +52,11 @@ public class WorldOverworld extends World {
 		
 		super.render(gc, sbg, g);
 		
+		g.drawString("FPS: " + gc.getFPS(), 10, 40);
+		
 		hud.drawVersion(g);
 		hud.drawHealth(g, health);
+		//hud.drawPlayerName(g, player);
 		
 	}
 	

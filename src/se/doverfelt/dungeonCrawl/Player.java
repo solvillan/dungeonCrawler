@@ -22,7 +22,7 @@ public class Player extends Creature {
 		
 		g = new SpriteSheet(g1, 32 * 2, 32 * 2);
 		
-		setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
+		setHitBox(14, 5, g.getSubImage(1, 1).getWidth() - 28, g.getSubImage(1, 1).getHeight() - 10);
 		
 		setupAnimations(g);
 		
@@ -54,25 +54,25 @@ public class Player extends Creature {
 		Input input = gc.getInput();
 		
 		if (input.isKeyDown(Input.KEY_W)) {
-			setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
+			//setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
 			move(0, -1);
 			currentAnim = ME.WALK_UP;
 			lastDir = "STAND_UP";
 		}
 		if (input.isKeyDown(Input.KEY_S)) {
-			setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
+			//setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
 			move(0, 1);
 			currentAnim = ME.WALK_DOWN;
 			lastDir = "STAND_DOWN";
 		}
 		if (input.isKeyDown(Input.KEY_A)) {
-			setHitBox(14, 5, g.getSubImage(1, 1).getWidth() - 10, g.getSubImage(1, 1).getHeight() -10);
+			//setHitBox(14, 5, g.getSubImage(1, 1).getWidth() - 10, g.getSubImage(1, 1).getHeight() -10);
 			move(-1, 0);
 			currentAnim = ME.WALK_LEFT;
 			lastDir = "STAND_LEFT";
 		}
 		if (input.isKeyDown(Input.KEY_D)) {
-			setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
+			//setHitBox(-10, 5, g.getSubImage(1, 1).getWidth() - 14, g.getSubImage(1, 1).getHeight() - 10);
 			move(1, 0);
 			currentAnim = ME.WALK_RIGHT;
 			lastDir = "STAND_RIGHT";

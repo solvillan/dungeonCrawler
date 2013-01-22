@@ -10,6 +10,6 @@
 	<sheet file="Character.png" height="32" key="char" width="32" />
 	<!-- fonts -->
 	<!-- maps -->
-	<map key="map1" file="Test.tmx" />
+	<map key="map1" file="Map1.tmx" />
 	</basedir>
 </resources>

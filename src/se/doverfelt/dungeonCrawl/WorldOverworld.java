@@ -77,6 +77,10 @@ public class WorldOverworld extends World {
 			health--;	
 		}
 		
+		if (input.isKeyPressed(Input.KEY_HOME)) {
+			//ServerHost code
+		}
+		
 		
 	}
 	

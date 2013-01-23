@@ -39,6 +39,10 @@ public class WorldMenu extends World {
 			System.exit(0);
 		}
 		
+		if (input.isKeyPressed(Input.KEY_F8)) {
+			//Connect code
+		}
+		
 	}
 
 }

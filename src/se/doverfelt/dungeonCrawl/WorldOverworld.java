@@ -78,7 +78,7 @@ public class WorldOverworld extends World {
 		}
 		
 		if (input.isKeyPressed(Input.KEY_HOME)) {
-			//ServerHost code
+			//ServerHost code 
 		}
 		
 		

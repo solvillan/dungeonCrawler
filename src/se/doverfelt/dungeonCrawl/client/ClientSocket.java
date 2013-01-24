@@ -10,6 +10,11 @@ import org.newdawn.slick.util.Log;
 
 public class ClientSocket {
 	
+	private static InetAddress address;
+	private static Socket connection;
+	private static ObjectOutputStream out;
+	private static ObjectInputStream in;
+	
 	public ClientSocket(String host) {
 		
 		int port = 1998;
@@ -17,16 +22,44 @@ public class ClientSocket {
 	    Log.info("Client socket initialized");
 	    
 	    try {
-	    	InetAddress address = InetAddress.getByName(host);
 	    	
-	    	Socket connection = new Socket(address, port);
+	    	Log.info("Attempting connection to: " + host);
 	    	
-	    	BufferedOutputStream bos = new BufferedOutputStream(connection.getOutputStream());
+	    	address = InetAddress.getByName(host);
 	    	
-	    	OutputStreamWriter osw = new OutputStreamWriter(bos);
+	    	connection = new Socket(address, port);
 	    	
-	    } catch
+	    	Log.info("Connected to: " + connection.getInetAddress().getHostName());
+	    	
+	    	out = new ObjectOutputStream(connection.getOutputStream());
+	    	out.flush();
+	    	
+	    	in = new ObjectInputStream(connection.getInputStream());
+	    	
+	    	Log.info("Streams setup");
+	    	
+	    } catch (EOFException e) {
+	    	e.printStackTrace();
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+	    }
 		
+	}
+	
+	public static InetAddress getAddress() {
+		return address;
+	}
+	
+	public static Socket getConnection() {
+		return connection;
+	}
+	
+	public static ObjectOutputStream getOutput() {
+		return out;
+	}
+	
+	public static ObjectInputStream getInput() {
+		return in;
 	}
 	
 }

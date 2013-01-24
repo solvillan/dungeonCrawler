@@ -1,10 +1,14 @@
 package se.doverfelt.dungeonCrawl;
 
+import javax.swing.JOptionPane;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+
+import se.doverfelt.dungeonCrawl.client.*;
 
 import it.randomtower.engine.World;
 
@@ -40,7 +44,10 @@ public class WorldMenu extends World {
 		}
 		
 		if (input.isKeyPressed(Input.KEY_F8)) {
-			//Connect code
+			
+			String host = JOptionPane.showInputDialog("Enter IP");
+			
+			ClientSocket client = new ClientSocket(host);
 		}
 		
 	}

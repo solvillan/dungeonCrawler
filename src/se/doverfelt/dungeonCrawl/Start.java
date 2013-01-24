@@ -1,6 +1,7 @@
 package se.doverfelt.dungeonCrawl;
 
 import java.io.IOException;
+import java.util.Random;
 
 import it.randomtower.engine.ME;
 import it.randomtower.engine.ResourceManager;
@@ -17,6 +18,7 @@ public class Start extends StateBasedGame {
 	private boolean resourcesInitiated = false;
 
 	public static String USERNAME;
+	private static Random random = new Random();
 	
 	public Start(String name) {
 		super(name);
@@ -36,7 +38,7 @@ public class Start extends StateBasedGame {
 		if (args.length >= 1) {
 			USERNAME = args[0];
 		} else {
-			USERNAME = "None";
+			USERNAME = "Player" + random.nextInt(1000);
 		}
 		
 		try {

@@ -23,7 +23,7 @@ public class WorldMenu extends World {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		super.render(gc, sbg, g);
 		
-		
+		g.setFont(FontManager.getDefault());
 		
 		g.drawString("Dungeon Crawler 0.1", 10, 25);
 		g.drawString("Menu!", gc.getWidth() / 2, gc.getHeight() / 2);

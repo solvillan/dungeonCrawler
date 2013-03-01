@@ -13,20 +13,21 @@ public class PlayerName extends Entity {
 
 	private Player player;
 	private int w;
+	private int h;
 	
 	public PlayerName(float x, float y, Player player, Graphics g) {
 		super(x, y);
 		
 		this.player = player;
 		
-		Font f = g.getFont();
-		
-		w = f.getWidth(Start.USERNAME);
+		w = FontManager.getDefault().getWidth(Start.USERNAME);
+		h = FontManager.getDefault().getHeight(Start.USERNAME);
 		
 		Image img = null;
 		try {
-			img = Image.createOffscreenImage(w, 20);
+			img = Image.createOffscreenImage(w, h);
 			Graphics g2 = img.getGraphics();
+			g2.setFont(FontManager.getDefault());
 			g2.setBackground(Color.black);
 			g2.clear();
 			g2.setColor(Color.white);
@@ -44,7 +45,7 @@ public class PlayerName extends Entity {
 	public void update(GameContainer gc, int delta) {
 		
 		x = (player.x +(player.width / 2)) - (w / 2);
-		y = player.y - 20;
+		y = player.y - h;
 		
 	}
 	

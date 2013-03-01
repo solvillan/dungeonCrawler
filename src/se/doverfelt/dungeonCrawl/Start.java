@@ -1,5 +1,6 @@
 package se.doverfelt.dungeonCrawl;
 
+import java.awt.FontFormatException;
 import java.io.IOException;
 import java.util.Random;
 
@@ -43,7 +44,8 @@ public class Start extends StateBasedGame {
 		
 		try {
 			AppGameContainer appgc = new AppGameContainer(new Start("Dungeon Crawl 0.1"));
-			appgc.setDisplayMode(appgc.getScreenWidth(), appgc.getScreenHeight(), true);
+			appgc.setDisplayMode(appgc.getScreenWidth() - 100, appgc.getScreenHeight() - 100, false);
+			appgc.setResizable(true);
 			appgc.setTargetFrameRate(60);
 			appgc.start();
 			
@@ -63,7 +65,8 @@ public class Start extends StateBasedGame {
 		
 		 try {
 			   ResourceManager.loadResources("data/resources.xml");
-			  } catch (IOException e) {
+			   FontManager.loadFonts();
+			  } catch (IOException | FontFormatException e) {
 			   Log.error("Failed to load resource file 'data/resources.xml': " + e.getMessage());
 			   throw new SlickException("Resource loading failed!");
 			  }

@@ -1,5 +1,9 @@
 package se.doverfelt.dungeonCrawl;
 
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
+
 import it.randomtower.engine.entity.Entity;
 
 public abstract class Creature extends Entity {
@@ -9,6 +13,7 @@ public abstract class Creature extends Entity {
 	}
 	
 	private CreatureAI ai;
+	public CreatureAI getAI() { return ai; }
 	
 	public static final int tileSize = 16;
 	public static final int scaleFactor = 2;
@@ -25,19 +30,30 @@ public abstract class Creature extends Entity {
 	private int defenseValue;
 	public int defenseValue() { return defenseValue; }
 	
+	private Vector2f v2fPos = new Vector2f();
+	public Vector2f getVector2f() { return v2fPos; }
+	
 	public Creature(float x, float y, int maxHp, int attack, int defense) {
 		super(x, y);
 		this.maxHp = maxHp;
 		this.hp = maxHp;
 		this.attackValue = attack;
 		this.defenseValue = defense;
+		v2fPos.x = x;
+		v2fPos.y = y;
+	}
+	
+	@Override
+	public void update(GameContainer gc, int delta) throws SlickException {
+		//super.update(gc, delta);
+		v2fPos.set(x, y);
 	}
 	
 	public void setAI(CreatureAI ai) {
 		this.ai = ai;
 	}
 	
-	public void move(int dx, int dy) {
+	public void move(float dx, float dy) {
 		float cx = x + dx * 2 ;
 		float cy = y + dy * 2;
 		
@@ -71,7 +87,7 @@ public abstract class Creature extends Entity {
 		
 		other.modifyHp(-amount);
 		
-		notify(name + " dealt %1$s damage to %2$s.", Integer.toString(amount), other.name);
+		//notify(name + " dealt %1$s damage to %2$s.", Integer.toString(amount), other.name);
 		
 	}
 

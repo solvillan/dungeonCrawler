@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="terrain" tilewidth="16" tileheight="16">
+  <image source="terrain.png" width="256" height="256"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="32" height="32">
+  <properties>
+   <property name="type" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3NsQ0AAAzCMPr/0/0CFkfK7GTfjebz+Xw+n8/n8/l8Pr/pL3tMiyZKABAAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="32" height="32">
+  <properties>
+   <property name="type" value="tree"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC82X4QrDIAyEhW7dI/T933Trj0GQ3OVibG1AaGv0u0SN9Git7Yva8Wufts7eD+RvyRYZ80XxV+dmGu07y7/CR74s5qv5/fOd8UfxKnw2F2OzfpSfDF9ZT0Wfkn9v/8ziW4vWXznzaH7lDKv7b6QWKfsnw1d0ZNiI37P6b8gyNfkKfj9mFl/Nq6cb+TC+9VX5bK9U+UgLMqY3w7f+s+77Ct8bH2lYyVdM5f+fq/GP8FHtY2Na4KPyPS1MT/YOqPBZv5oDVv8Qw/PJ6hrlexqyNT/iKxosd5TN+HfZE/jnP/BrUTvZX6hYeDYAEAAA
+  </data>
+ </layer>
+</map>

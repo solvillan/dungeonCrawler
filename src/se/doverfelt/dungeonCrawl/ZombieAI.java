@@ -32,18 +32,18 @@ public class ZombieAI extends CreatureAI {
 				isMoving = true;
 				seed = Math.random() + 0.05;
 				
-				if (!(distance < 200)) {
+				if (!(distance < 250)) {
 					if (seed < 0.2) {
-						creature.move((float) (Math.random() * 2), 0f);
+						creature.move((float) (Math.random()), 0f);
 						direction = 0;
 					} else if (seed > 0.1 && seed < 0.4) {
-						creature.move(0f, (float) (Math.random() * 2));
+						creature.move(0f, (float) (Math.random()));
 						direction = 1;
 					} else if (seed > 0.3 && seed < 0.6) {
-						creature.move(-((float) (Math.random() * 2)), 0f);
+						creature.move(-((float) (Math.random())), 0f);
 						direction = 2;
 					} else if (seed > 0.5 && seed < 0.8) {
-						creature.move(0f, -((float) (Math.random() * 2)));
+						creature.move(0f, -((float) (Math.random())));
 						direction = 3;
 					} else {
 					}
@@ -57,21 +57,21 @@ public class ZombieAI extends CreatureAI {
 				}
 			} else if (random >= 0.5 && !isMoving && !isColliding) {
 
-				isMoving = true;
+				isMoving = false;
 				direction = 5;
 
 			} else if (isMoving && timer < (Math.random() * 1000) && !isColliding) {
 				if (direction == 0) {
-					creature.move((float) (Math.random() * 2), 0f);
+					creature.move((float) (Math.random()), 0f);
 					timer++;
 				} else if (direction == 1) {
-					creature.move(0f, (float) (Math.random() * 2));
+					creature.move(0f, (float) (Math.random()));
 					timer++;
 				} else if (direction == 2) {
-					creature.move(-((float) (Math.random() * 2)), 0f);
+					creature.move(-((float) (Math.random())), 0f);
 					timer++;
 				} else if (direction == 3) {
-					creature.move(0f, -((float) (Math.random() * 2)));
+					creature.move(0f, -((float) (Math.random())));
 					timer++;
 				} else if (direction == 5) {
 					timer++;

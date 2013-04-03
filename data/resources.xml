@@ -7,6 +7,7 @@
 	<!-- songs -->
 	<!-- images -->
 	<!-- sheets -->
+    <sheet file="terrain.png" height="16" key="terrain" width="16" />
 	<sheet file="Character.png" height="32" key="char" width="32" />
 	<!-- fonts -->
 	<!-- maps -->

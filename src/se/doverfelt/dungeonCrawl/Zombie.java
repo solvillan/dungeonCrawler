@@ -19,12 +19,12 @@ public class Zombie extends Creature{
 		
 		setGraphic(ResourceManager.getSpriteSheet("char").getSprite(1, 1).getScaledCopy(scaleFactor));
 		
-		setHitBox(0, 0, ResourceManager.getSpriteSheet("char").getSprite(1, 1).getScaledCopy(scaleFactor).getWidth(), ResourceManager.getSpriteSheet("char").getSprite(1, 1).getScaledCopy(scaleFactor).getHeight());
-		
-		addType(PLAYER);
-		
-		collidable = true;
-		
+		//setHitBox(0, 0, ResourceManager.getSpriteSheet("char").getSprite(1, 1).getScaledCopy(scaleFactor).getWidth(), ResourceManager.getSpriteSheet("char").getSprite(1, 1).getScaledCopy(scaleFactor).getHeight());
+
+        setHitBox(0, 0, ResourceManager.getSpriteSheet("char").getSprite(1, 1).getScaledCopy(scaleFactor).getWidth(), ResourceManager.getSpriteSheet("char").getSprite(1, 1).getScaledCopy(scaleFactor).getHeight(), true);
+
+		addType(Creature.ZOMBIE);
+
 	}
 	
 	@Override
@@ -44,9 +44,19 @@ public class Zombie extends Creature{
 		
 		if (((ZombieAI)getAI()).hasTarget && this.collide(Tile.WALL, x + 1, y + 1) == null && this.collide(Tile.WALL, x - 1, y - 1) == null) {
 			setPosition(tweener.apply(this));
-		} else {
-			setPosition(new Vector2f(x - 1, y - 1));
-		}
+		} else if (((ZombieAI)getAI()).hasTarget && this.collide(Tile.WALL, x + 1, y) != null) {
+            tweener.pause();
+			setPosition(new Vector2f(x - 1, y));
+		} else if (((ZombieAI)getAI()).hasTarget && this.collide(Tile.WALL, x - 1, y) != null) {
+            tweener.pause();
+            setPosition(new Vector2f(x + 1, y));
+        } else if (((ZombieAI)getAI()).hasTarget && this.collide(Tile.WALL, x, y + 1) != null) {
+            tweener.pause();
+            setPosition(new Vector2f(x, y - 1));
+        } else if (((ZombieAI)getAI()).hasTarget && this.collide(Tile.WALL, x, y - 1) != null) {
+            tweener.pause();
+            setPosition(new Vector2f(x, y + 1));
+        }
 		
 	}
 	

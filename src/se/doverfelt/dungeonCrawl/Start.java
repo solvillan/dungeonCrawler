@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Random;
 
 import it.randomtower.engine.ME;
-import it.randomtower.engine.ResourceManager;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
@@ -20,6 +19,8 @@ public class Start extends StateBasedGame {
 
 	public static String USERNAME;
 	private static Random random = new Random();
+
+    public static LoadScreen loadScreen;
 	
 	public Start(String name) {
 		super(name);
@@ -27,11 +28,14 @@ public class Start extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer arg0) throws SlickException {
-		
-		initResources();
-		
+
+        loadScreen = new LoadScreen(0, arg0);
+
+        addState(loadScreen);
 		addState(new WorldMenu(1, arg0));
 		addState(new WorldOverworld(2, arg0));
+
+        enterState(0);
 		
 	}
 	
@@ -54,24 +58,6 @@ public class Start extends StateBasedGame {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-		
-	}
-	
-	private void initResources() throws SlickException {
-		
-		if (resourcesInitiated ) {
-			return;
-		}
-		
-		 try {
-			   ResourceManager.loadResources("data/resources.xml");
-			   FontManager.loadFonts();
-			  } catch (IOException | FontFormatException e) {
-			   Log.error("Failed to load resource file 'data/resources.xml': " + e.getMessage());
-			   throw new SlickException("Resource loading failed!");
-			  }
-			 
-		resourcesInitiated = true;
 		
 	}
 	

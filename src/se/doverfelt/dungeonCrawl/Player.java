@@ -91,6 +91,10 @@ public class Player extends Creature {
 		if (!input.isKeyDown(Input.KEY_W) && !input.isKeyDown(Input.KEY_A) && !input.isKeyDown(Input.KEY_S) && !input.isKeyDown(Input.KEY_D)) {
 			currentAnim = lastDir;
 		}
+
+        if (input.isKeyPressed(Input.KEY_SPACE) && this.collide(Creature.ZOMBIE, ((WorldOverworld)world).zombie.x, ((WorldOverworld)world).zombie.y) != null) {
+            this.collidingCreature.destroy();
+        }
 		
 		if (animations != null) {
 			if (currentAnim != null) {

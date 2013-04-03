@@ -7,10 +7,8 @@ import org.newdawn.slick.geom.Vector2f;
 import it.randomtower.engine.entity.Entity;
 
 public abstract class Creature extends Entity {
-	
-	public Creature(float x, float y) {
-		super(x, y);
-	}
+
+    public static final String ZOMBIE = "zombie";
 	
 	private CreatureAI ai;
 	public CreatureAI getAI() { return ai; }

@@ -8,7 +8,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
 import it.randomtower.engine.ME;
-import it.randomtower.engine.ResourceManager;
+//import it.randomtower.engine.ResourceManager;
 import it.randomtower.engine.entity.Entity;
 
 public class Player extends Creature {

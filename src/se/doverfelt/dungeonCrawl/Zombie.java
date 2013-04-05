@@ -6,7 +6,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
-import it.randomtower.engine.ResourceManager;
+//import it.randomtower.engine.ResourceManager;
 import it.randomtower.engine.tween.Tweener;
 
 public class Zombie extends Creature{

@@ -9,8 +9,9 @@
 	<!-- sheets -->
     <sheet file="terrain.png" height="16" key="terrain" width="16" />
 	<sheet file="Character.png" height="32" key="char" width="32" />
+    <sheet file="bg.png" key="bg" height="1" width="1" />
 	<!-- fonts -->
 	<!-- maps -->
-	<map key="map1" file="Test.tmx" />
+	<map key="map1" file="Map1.tmx" />
 	</basedir>
 </resources>

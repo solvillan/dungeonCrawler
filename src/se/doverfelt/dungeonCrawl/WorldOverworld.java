@@ -10,14 +10,14 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.util.Log;
 
-import it.randomtower.engine.Camera;
 import it.randomtower.engine.World;
+import it.randomtower.engine.Camera;
 
 public class WorldOverworld extends World {
 	
 	private Map map;
 	
-	private Player player = null;
+	public Player player;
 	private PlayerName pname;
 	
 	public static Zombie zombie;
@@ -28,7 +28,7 @@ public class WorldOverworld extends World {
 	
 	private ChatWindow chat;
 	
-	private boolean isInitialized = false;
+	public boolean isInitialized = false;
 	
 	public WorldOverworld(int id, GameContainer container) {
 		super(id, container);
@@ -40,15 +40,26 @@ public class WorldOverworld extends World {
 			map = new Map("map1");
 			chat = new ChatWindow(gc, false, gc.getGraphics());
 			hud = new Hud();
-			player = new Player(60, 60);
-			pname = new PlayerName(10, 10, player, gc.getGraphics());
-			zombie = new Zombie(425, 425, this);
+			player = new Player(100, 100);
 			map.loadEntityFromMap(Arrays.asList("ground"), this);
 			map.loadEntityFromMap(Arrays.asList("tree"), this);
-			add(zombie);
-			add(player);
-			add(pname);
-			this.setCamera(new Camera(player, gc.getWidth(), gc.getHeight()));
+            map.loadEntityFromMap(Arrays.asList("playerspawn"), this);
+			//add(player);
+            if (player != null) {
+                zombie = new Zombie(425, 425, this);
+                add(zombie);
+                pname = new PlayerName(10, 10, player, gc.getGraphics());
+                add(pname);
+                add(player);
+			    this.setCamera(new Camera(player, gc.getWidth(), gc.getHeight()));
+            } else {
+                try {
+                    throw new Throwable("No player in map!");
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+                sbg.enterState(1);
+            }
 			isInitialized = true;
 			Log.debug("Initialized Overworld");
 		}
@@ -61,7 +72,10 @@ public class WorldOverworld extends World {
 		if (gc.hasFocus()) {
 			
 			g.setFont(FontManager.getDefault());
-			
+
+            //g.drawImage(ResourceManager.getSpriteSheet("bg"), 0, 0, gc.getWidth(), gc.getHeight());
+            g.drawImage(ResourceManager.getSpriteSheet("bg"), 0, 0, gc.getWidth(), gc.getHeight(), 0, 0, ResourceManager.getSpriteSheet("bg").getWidth(), ResourceManager.getSpriteSheet("bg").getHeight());
+
 			super.render(gc, sbg, g);
 			g.setColor(Color.white);
 			g.drawString("FPS: " + gc.getFPS(), 10, 40);
@@ -76,7 +90,7 @@ public class WorldOverworld extends World {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		
-		if (gc.hasFocus()) {
+		if (gc.hasFocus() && isInitialized) {
 			Input input = gc.getInput();
 			if (!chat.hasFocus()) {
 				super.update(gc, sbg, delta);

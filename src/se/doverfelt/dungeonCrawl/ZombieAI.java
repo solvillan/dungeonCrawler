@@ -22,9 +22,9 @@ public class ZombieAI extends CreatureAI {
 	@Override
 	public void update() {
 		
-		if (creature.x < world.width && creature.x > 0 && creature.y < world.height && creature.y > 0) {
+		if (creature.x < world.width && creature.x > 0 && creature.y < world.height && creature.y > 0 && world.isInitialized) {
 			
-			float distance = creature.getVector2f().distance(world.getPlayer().getVector2f());
+			float distance = creature.getVector2f().distance(world.player.getVector2f());
 			//Log.debug("Distance: " + goalPos);
 			
 			double random = Math.random();

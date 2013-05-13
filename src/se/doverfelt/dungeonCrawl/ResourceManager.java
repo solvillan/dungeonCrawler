@@ -30,10 +30,6 @@ public class ResourceManager {
     private static Graphics g;
     private static StateBasedGame sbg;
 
-    private ResourceManager(Graphics g, StateBasedGame sbg) {
-
-    }
-
     public static void setGraphics(Graphics g2) {
         g = g2;
     }

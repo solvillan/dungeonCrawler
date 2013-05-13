@@ -9,6 +9,7 @@ import it.randomtower.engine.actors.StaticActor;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.tiled.TiledMap;
 import org.newdawn.slick.util.Log;
 
@@ -20,7 +21,7 @@ public class Map {
 		map = ResourceManager.getMap(mapName);
 	}
 	
-	public void loadEntityFromMap(List<String> types, World world)
+	public void loadEntityFromMap(List<String> types, WorldOverworld world)
 			throws SlickException {
 		if (map == null) {
 			Log.error("Unable to load map information");
@@ -52,10 +53,8 @@ public class Map {
 							// load entity from Tiled map position and set Image
 							// for static actor using image reference stored
 							// into tiled map
-							StaticActor te = new StaticActor(
-									w * img.getScaledCopy(4).getWidth(), h * img.getScaledCopy(4).getHeight(),
-									img.getScaledCopy(4).getWidth(), img.getScaledCopy(4).getHeight(), img.getScaledCopy(4));
-							world.add(te);
+                            GroundTile te = new GroundTile((float)w * img.getScaledCopy(4).getWidth(), (float)h * img.getScaledCopy(4).getHeight(), img.getScaledCopy(4));
+                            world.add(te);
 							loaded++;
 						} else if (img != null && map.getLayerProperty(layerIndex, "type", null).equalsIgnoreCase("tree")) {
 							// load entity from Tiled map position and set Image
@@ -64,7 +63,17 @@ public class Map {
 							Tile te = new Tile((float)w * img.getScaledCopy(4).getWidth(), (float)h * img.getScaledCopy(4).getHeight(), img.getScaledCopy(4));
 							world.add(te);
 							loaded++;
-						}
+						} else if (img != null && map.getLayerProperty(layerIndex, "type", null).equalsIgnoreCase("playerspawn")) {
+                            // load entity from Tiled map position and set Image
+                            // for static actor using image reference stored
+                            // into tiled map
+                            //world.player.setPosition(new Vector2f(w * 64, h * 64));
+                            world.player.x = w * 64;
+                            world.player.y = h * 64;
+                            //world.player = new Player(w * 64, h * 64);
+                            world.add(world.player);
+                            loaded++;
+                        }
 					}
 				}
 				

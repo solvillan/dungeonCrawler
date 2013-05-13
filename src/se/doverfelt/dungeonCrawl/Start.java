@@ -48,9 +48,9 @@ public class Start extends StateBasedGame {
 		
 		try {
 			AppGameContainer appgc = new AppGameContainer(new Start("Dungeon Crawl 0.1"));
-			appgc.setDisplayMode(appgc.getScreenWidth() - 100, appgc.getScreenHeight() - 100, false);
+			appgc.setDisplayMode(appgc.getScreenWidth(), appgc.getScreenHeight(), true);
 			appgc.setResizable(true);
-			appgc.setTargetFrameRate(60);
+			appgc.setTargetFrameRate(random.nextInt(60));
 			appgc.start();
 			
 			ME.keyToggleDebug = Input.KEY_1;
